@@ -1,0 +1,59 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background-image: url("background.jpg");  
+            background-size: cover;          
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 25px;
+            text-align: center;
+            font-style: italic;
+        }
+        *{
+            padding: 5px;
+            
+            font-weight: bold;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align:center; ">Palindrome Finder</h1>
+    
+        <p></p>
+        <b>Enter the word:</b> &nbsp;
+        <input type="text" id="word"> &nbsp;        
+        <button type="button" onclick="checkPalinrome()" style="padding-left:20px;padding-right:20px;font-size:30px;;font-weight:bold;">FIND!!!</button>
+
+        <p></p>
+        <span id="answer"></span>
+        
+        <script src="cordova.js"></script>
+        <script>
+            function checkPalinrome() {
+                var word = document.getElementById("word").value;
+                var result = isPalindrome(word.replace(/\s/g,'').toLowerCase());
+
+                if(result){
+                    document.getElementById("answer").innerHTML = "Palindrome!!";                    
+                }
+                else{
+                    document.getElementById("answer").innerHTML = "Not a Palindrome!!";
+                }
+            }
+            function isPalindrome(str) {
+                var len = Math.floor(str.length / 2);
+                for (var i = 0; i < len; i++)
+                  if (str[i] !== str[str.length - i - 1])
+                    return false;
+                 return true;
+            }
+        </script>
+</body>
+
+</html>
